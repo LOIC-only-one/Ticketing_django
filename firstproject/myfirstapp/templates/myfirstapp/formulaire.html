@@ -1,0 +1,8 @@
+<body>
+    <form action="/myfirstapp/bonjour" method="get">
+        {% csrf_token %}
+            <label for="nom">Enter your name:</label>
+            <input type="text" name="nom">
+            <input type="submit" value="envoyer">
+    </form>
+</body>
