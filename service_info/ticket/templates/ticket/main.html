@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Titre par défaut{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'ticket:index' %}">Accueil</a></li>
+            <li><a href="{% url 'ticket:create_ticket' %}">Créer un ticket</a></li>
+            <li><a href="{% url 'ticket:read_ticket' %}">Voir un ticket</a></li>
+            <li><a href="{% url 'ticket:update_ticket' %}">Mettre à jour</a></li>
+            <li><a href="{% url 'ticket:delete_ticket' %}">Supprimer un ticket</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>Ceci est le footer </p>
+    </footer>
+</body>
+</html>

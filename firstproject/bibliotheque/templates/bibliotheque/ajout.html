@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'ajout CRUD</title>
+</head>
+<body>
+    <form method="post" action="/bibliotheque/traitement" class="form-add">
+        {% csrf_token %}
+        {{ form.as_ul }}
+
+        <input type="submit" value="envoyer_les_donnees">
+    </form>
+</body>
+</html>

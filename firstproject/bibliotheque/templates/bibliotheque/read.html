@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des livres</title>
+</head>
+<body>
+    <h1>Liste des livres</h1>
+    <h2>Tous les livres</h2>
+    <ul>
+        {% for livre in Livres %}
+            <li>{{ livre }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Liste des gros livres (plus de 300 pages)</h2>
+    <ul>
+        {% for livre in Livres %}
+            {% if livre.nombre_page > 300 %}
+                <li>{{ livre }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h2>Liste des livres moyens (entre 100 et 300 pages)</h2>
+    <ul>
+        {% for livre in Livres %}
+            {% if livre.nombre_page >= 100 and livre.nombre_page <= 300 %}
+                <li>{{ livre }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
