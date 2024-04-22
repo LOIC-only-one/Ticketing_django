@@ -1,0 +1,8 @@
+- Créer ticket = OK
+- Voir ticket = NO
+- Mettre à jour = NO
+- Supprimer ticket = NO
+- Créer une catégorie = OK
+- Delete une catégorie = NO
+- Update une catégorie = NO
+- Mettre a jour une catégorie = NO

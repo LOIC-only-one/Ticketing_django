@@ -15,3 +15,18 @@ class TicketForm(ModelForm):
             'status': _('Statut'),
             'category': _('Catégorie'),
         }
+
+class CategoryForm(ModelForm):
+    priority_choices = (
+        (1, 'Low'),
+        (2, 'Medium'),
+        (3, 'High'),
+    )
+    class Meta:
+        model = models.Category
+        fields = ('name', 'description', 'priority')
+        labels = {
+            'name': 'Nom',
+            'description': 'Description',
+            'priority': 'Priorité',
+        }

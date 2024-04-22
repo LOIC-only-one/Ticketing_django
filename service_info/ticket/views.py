@@ -36,10 +36,54 @@ def update_ticket(request, ticket_id):
             return redirect('index')  # Redirige vers la page index.html après la mise à jour du ticket
     return render(request, 'ticket/update_ticket.html', {'form': form, 'ticket': ticket})
 
-def traitement(request):
+def traitement_ticket(request):
     lform = TicketForm(request.POST)
     if lform.is_valid():
         ticket = lform.save()
-        return render(request, 'ticket/affiche.html', {'Ticket': ticket})
+        return render(request, 'ticket/affiche_ticket.html', {'Ticket': ticket})
     else:
-        return render(request, 'ticket/ajout.html', {'form': lform})
+        return render(request, 'ticket/create_ticket.html', {'form': lform})
+    
+    
+## CRUD pour les catégories
+from .forms import CategoryForm
+
+def create_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = CategoryForm()
+    return render(request, 'ticket/create_category.html', {'form': form})
+
+
+def traitement_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            category = form.save()
+            return render(request, 'ticket/affiche_category.html', {'category': category})
+    else:
+        form = CategoryForm()
+    return render(request, 'ticket/create_category.html', {'form': form})
+
+def read_category(request, category_id):
+    category = Category.objects.get(id=category_id)
+    return render(request, 'ticket/affiche_category.html', {'category': category})
+
+def delete_category(request, category_id):
+    category = Category.objects.get(id=category_id)
+    category.delete()
+    return redirect('index')
+
+def update_category(request, category_id):
+    category = Category.objects.get(id=category_id)
+    form = CategoryForm(instance=category)
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'ticket/update_category.html', {'form': form, 'category': category})

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% extends 'ticket/main.html' %}
+    {% block title %}Acceuil - Ticketing{% endblock %}
+</head>
+
+<body>
+    <h1>New Category Created</h1>
+    <p>Category: {{ category.name }}</p>
+    <p>Description: {{ category.description }}</p>
+    <p>Priority: {{ category.priority }}</p>
+    <a href="{% url 'ticket:index' %}">Accueil</a>
+</body>
+</html>

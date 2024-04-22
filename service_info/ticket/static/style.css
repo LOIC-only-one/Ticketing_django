@@ -2,12 +2,12 @@
 
 body {
     margin:0;
-    font-size: 28px;
+    font-size: 14px;
     font-family: "Roboto", sans-serif;
 }
 
 nav {
-    background-color: #333;
+    background-color: #d35a5a;
     overflow: hidden;
 }
 
@@ -32,10 +32,46 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: #555;
+    
 }
 
 .form-add {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.form-add .form-group {
+    margin-bottom: 20px;
+}
+
+.form-add label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-add input[type="text"],
+.form-add input[type="email"],
+.form-add textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-add input[type="submit"] {
+    margin-top: 2%;
+    background-color: #d35a5a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-add input[type="submit"]:hover {
+    background-color: #b54141;
 }
