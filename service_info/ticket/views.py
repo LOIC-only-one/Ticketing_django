@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import TicketForm
 from .models import Ticket
+from .forms import CategoryForm
 
 def index(request):
-    tickets = Ticket.objects.all()  # Récupère tous les tickets
+    tickets = Ticket.objects.all()
     return render(request, 'ticket/index.html', {'tickets': tickets})
 
 ## CRUD pour les tickets
@@ -33,7 +34,7 @@ def update_ticket(request, ticket_id):
         form = TicketForm(request.POST, instance=ticket)
         if form.is_valid():
             form.save()
-            return redirect('index')  # Redirige vers la page index.html après la mise à jour du ticket
+            return redirect('index')
     return render(request, 'ticket/update_ticket.html', {'form': form, 'ticket': ticket})
 
 def traitement_ticket(request):
@@ -45,10 +46,11 @@ def traitement_ticket(request):
         return render(request, 'ticket/create_ticket.html', {'form': lform})
     
     
+    
 ## CRUD pour les catégories
-from .forms import CategoryForm
 
 def create_category(request):
+    """Création d'une catégorie."""
     if request.method == 'POST':
         form = CategoryForm(request.POST)
         if form.is_valid():
@@ -60,6 +62,7 @@ def create_category(request):
 
 
 def traitement_category(request):
+    """Traitement du formulaire de création de catégorie."""
     if request.method == 'POST':
         form = CategoryForm(request.POST)
         if form.is_valid():
@@ -70,15 +73,18 @@ def traitement_category(request):
     return render(request, 'ticket/create_category.html', {'form': form})
 
 def read_category(request, category_id):
+    """Recherche par id de la catégorie et affiche les détails de la catégorie."""
     category = Category.objects.get(id=category_id)
     return render(request, 'ticket/affiche_category.html', {'category': category})
 
 def delete_category(request, category_id):
+    """Suppression d'une catégorie par id."""
     category = Category.objects.get(id=category_id)
     category.delete()
     return redirect('index')
 
 def update_category(request, category_id):
+    """Update d'une catégorie par id."""
     category = Category.objects.get(id=category_id)
     form = CategoryForm(instance=category)
     if request.method == 'POST':

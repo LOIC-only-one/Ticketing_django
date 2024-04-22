@@ -7,22 +7,41 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
+<header>
     <nav>
         <ul>
             <li><a href="{% url 'ticket:index' %}">Accueil</a></li>
-            <li><a href="{% url 'ticket:create_ticket' %}">Créer un ticket</a></li>
-            <li><a href="{% url 'ticket:read_ticket' %}">Voir un ticket</a></li>
-            <li><a href="{% url 'ticket:update_ticket' %}">Mettre à jour</a></li>
-            <li><a href="{% url 'ticket:delete_ticket' %}">Supprimer un ticket</a></li>
-            <li><a href="{% url 'ticket:create_category' %}">Créer une catégorie</a></li>
+            
+            <li class="sub-menu">
+                <a href="#">Les tickets</a>
+                <ul>
+                    <li><a href="{% url 'ticket:create_ticket' %}">Créer un ticket</a></li>
+                    <li><a href="{% url 'ticket:read_ticket' %}">Voir un ticket</a></li>
+                    <li><a href="{% url 'ticket:update_ticket' %}">Mettre à jour un ticket</a></li>
+                    <li><a href="{% url 'ticket:delete_ticket' %}">Supprimer un ticket</a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="#">Les catégories</a>
+                <ul>
+                    <li><a href="{% url 'ticket:create_category' %}">Créer une catégorie</a></li>
+                    <li><a href="{% url 'ticket:read_category' %}">Voir une catégorie</a></li>
+                    <li><a href="{% url 'ticket:update_category' %}">Mettre à jour une catégorie</a></li>
+                    <li><a href="{% url 'ticket:delete_category' %}">Supprimer une catégorie</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-    <footer>
-        <p>Ceci est le footer </p>
-    </footer>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <p>Ceci est le footer </p>
+</footer>
 </body>
 </html>

@@ -6,7 +6,6 @@
     <form method="post" action="/ticket/traitement_category" class="form-add">
         {% csrf_token %}
         {{ form.as_ul }}
-
         <input type="submit" value="Créer un ticket">
     </form>
 {% endblock %}

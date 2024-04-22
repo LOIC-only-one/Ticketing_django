@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% extends 'ticket/main.html' %}
+    {% block title %}Affiche Ticket - Ticketing{% endblock %}
 </head>
-{% extends 'ticket/main.html' %}
-{% block title %}Acceuil - Ticketing{% endblock %}
+
 <body>
     <h1>Ticket Detail</h1>
     <p><strong>Title:</strong> {{ ticket.title }}</p>
