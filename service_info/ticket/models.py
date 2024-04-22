@@ -28,3 +28,4 @@ class Ticket(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.description[:50]} - {self.created_at} - {self.author} - {self.status}"
+

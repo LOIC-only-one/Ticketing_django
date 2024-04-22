@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import TicketForm
+
 from .models import Ticket
-from .forms import CategoryForm
+from .forms import *
+
 
 def index(request):
     tickets = Ticket.objects.all()
@@ -20,7 +21,7 @@ def create_ticket(request):
 
 def read_ticket(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
-    return render(request, 'ticket/read_ticket.html', {'ticket': ticket})
+    return render(request, 'ticket/affiche_ticket.html', {'ticket': ticket})
 
 def delete_ticket(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
@@ -46,9 +47,20 @@ def traitement_ticket(request):
         return render(request, 'ticket/create_ticket.html', {'form': lform})
     
     
+def search_ticket(request):
+    if request.method == 'POST':
+        lform = TicketIdForm(request.POST)
+        if lform.is_valid():
+            ticket_id = lform.cleaned_data['ticket_id']
+            return redirect('ticket:read_ticket', ticket_id=ticket_id)
+    else:
+        lform = TicketIdForm()
+    return render(request, 'ticket/search_ticket.html', {'form': lform})
     
-## CRUD pour les catégories
-
+    
+    
+    
+    
 def create_category(request):
     """Création d'une catégorie."""
     if request.method == 'POST':
@@ -60,9 +72,7 @@ def create_category(request):
         form = CategoryForm()
     return render(request, 'ticket/create_category.html', {'form': form})
 
-
 def traitement_category(request):
-    """Traitement du formulaire de création de catégorie."""
     if request.method == 'POST':
         form = CategoryForm(request.POST)
         if form.is_valid():

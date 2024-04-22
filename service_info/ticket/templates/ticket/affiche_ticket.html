@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% extends 'ticket/main.html' %}
-    {% block title %}Affiche Ticket - Ticketing{% endblock %}
-</head>
+{% extends 'ticket/main.html' %}
 
-<body>
+{% block title %}Acceuil - Ticketing{% endblock %}
+
+{% block content %}
     <h1>Ticket Detail</h1>
     <p><strong>Title:</strong> {{ ticket.title }}</p>
     <p><strong>Description:</strong> {{ ticket.description }}</p>
     <p><strong>Author:</strong> {{ ticket.author }}</p>
     <p><strong>Status:</strong> {{ ticket.status }}</p>
     <p><strong>Category:</strong> {{ ticket.category }}</p>
-
-    <a href="{% url 'ticket:index' %}">Accueil</a>
-</body>
-</html>
+{% endblock %}

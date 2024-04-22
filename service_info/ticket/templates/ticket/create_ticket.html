@@ -3,7 +3,7 @@
 {% block title %}Créer - Ticketing{% endblock %}
 
 {% block content %}
-    <form method="post" action="/ticket/traitement_category" class="form-add">
+    <form method="post" action="/ticket/traitement_ticket" class="form-add">
         {% csrf_token %}
         {{ form.as_ul }}
 

@@ -3,6 +3,11 @@
 {% block title %}Acceuil - Ticketing{% endblock %}
 
 {% block content %}
-    <h3>Ticket à traiter :</h3>
-    <h3>Ticket terminé :</h3>
+    <h1>All Tickets</h1>
+    <ul>
+        {% for ticket in tickets %}
+            <li>{{ ticket }}</li>
+            <li>{{ ticket.id }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
