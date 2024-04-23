@@ -10,7 +10,7 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #555;
+    background-color: #805656;
 }
 
 nav ul li {
@@ -87,3 +87,30 @@ nav ul li a:hover {
 .form-add input[type="submit"]:hover {
     background-color: #b54141;
 }
+.ticket-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+    .ticket {
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        padding: 20px;
+        width: 300px;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .ticket h3 {
+        margin-top: 0;
+    }
+
+    .ticket p {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .ticket:hover {
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }

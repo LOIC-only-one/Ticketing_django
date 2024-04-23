@@ -15,7 +15,7 @@ urlpatterns = [
     path('traitement_category', views.traitement_category, name='traitement_category'),
 
     path('create_category/', views.create_category, name='create_category'),
-    path('read_category/', views.read_category, name='read_category'),
-    path('delete_category/', views.delete_category, name='delete_category'),
-    path('update_category/', views.update_category, name='update_category'),
+    path('read_category/<int:category_id>/', views.read_category, name='read_category'),
+    path('delete_category/<int:category_id>/', views.delete_category, name='delete_category'),
+    path('update_category/<int:category_id>/', views.update_category, name='update_category'),
 ]

@@ -1,13 +1,21 @@
 {% extends 'ticket/main.html' %}
 
-{% block title %}Acceuil - Ticketing{% endblock %}
+{% block title %}Accueil - Ticketing{% endblock %}
+
 
 {% block content %}
     <h1>All Tickets</h1>
-    <ul>
+    <div class="ticket-container">
         {% for ticket in tickets %}
-            <li>{{ ticket }}</li>
-            <li>{{ ticket.id }}</li>
+            <div class="ticket">
+                <h3>{{ ticket.title }}</h3>
+                <p><strong>Description:</strong> {{ ticket.description }}</p>
+                <p><strong>Statut:</strong> {{ ticket.status }}</p>
+                <p><strong>Créé le:</strong> {{ ticket.created_at }}</p>
+                <p><strong>Catégorie:</strong> {{ ticket.category }}</p>
+                <p><strong>Auteur:</strong> {{ ticket.author }}</p>
+                <p><strong>ID:</strong> {{ ticket.id }}</p>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

@@ -8,7 +8,7 @@ class Category(models.Model):
         (2, 'Medium'),
         (3, 'High'),
     )
-    priority = models.IntegerField(choices=priority_choices)
+    priority = models.IntegerField(choices=priority_choices, default=1)
     def __str__(self):
         return self.name
 
@@ -23,7 +23,7 @@ class Ticket(models.Model):
         ('IN_PROGRESS', 'In Progress'),
         ('CLOSED', 'Closed'),
     )
-    status = models.CharField(max_length=20, choices=status_choices)
+    status = models.CharField(max_length=20, choices=status_choices, default='OPEN')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
