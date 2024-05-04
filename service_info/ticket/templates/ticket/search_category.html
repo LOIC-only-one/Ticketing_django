@@ -1,0 +1,21 @@
+{% extends 'ticket/main.html' %}
+
+{% block title %}Acceuil - Ticketing{% endblock %}
+
+{% block content %}
+    <h1>Panneau de configuration des catégories :</h1>
+    <form method="post" action="{% url 'ticket:search_category' %}?category_id={{ form.category_id.value }}" class="form-add">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Chercher une categorie">
+    </form>
+
+    <h1>Toutes les catégories :</h1>
+    <div class="ticket-container">
+        {% for category in categories %}
+            <div class="ticket">
+                <h3>{{ category.name }}</h3>
+                <p><strong>ID:</strong> {{ category.id }}</p>
+            </div>
+        {% endfor %}
+{% endblock %}

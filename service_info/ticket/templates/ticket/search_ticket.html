@@ -3,7 +3,7 @@
 {% block title %}Acceuil - Ticketing{% endblock %}
 
 {% block content %}
-    <h3>Rechercher un ticket :</h3>
+    <h1>Panneau de configuration des tickets :</h1>
     <form method="post" action="{% url 'ticket:search_ticket' %}?ticket_id={{ form.ticket_id.value }}" class="form-add">
         {% csrf_token %}
         {{ form.as_ul }}

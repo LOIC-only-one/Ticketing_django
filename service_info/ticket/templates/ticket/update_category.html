@@ -1,0 +1,14 @@
+{% extends 'ticket/main.html' %}
+
+{% block title %}Accueil - Ticketing{% endblock %}
+
+
+{% block content %}
+<form method="post" action="{% url 'ticket:update_category' category_id=category.id %}" class="form-add">
+    {% csrf_token %}
+    {{ form.as_ul }}
+
+    <input type="submit" value="Mettre à jour la categorie">
+</form>
+
+{% endblock %}

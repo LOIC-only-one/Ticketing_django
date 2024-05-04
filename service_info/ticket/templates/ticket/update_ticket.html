@@ -1,0 +1,13 @@
+{% extends 'ticket/main.html' %}
+
+{% block title %}Accueil - Ticketing{% endblock %}
+
+
+{% block content %}
+<form method="post" action="{% url 'ticket:update_ticket' ticket_id=ticket.id %}" class="form-add">
+    {% csrf_token %}
+    {{ form.as_ul }}
+
+    <input type="submit" value="Mettre à jour le ticket">
+</form>
+{% endblock %}

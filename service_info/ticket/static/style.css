@@ -6,6 +6,9 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+h1 {
+    margin: 2%;
+}
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -73,7 +76,7 @@ nav ul li a:hover {
     font-size: 16px;
 }
 
-.form-add input[type="submit"] {
+.form-add input[type="submit"], .index-input input[type="button"], input[type="submit"] {
     margin-top: 2%;
     background-color: #d35a5a;
     color: #fff;
@@ -90,6 +93,8 @@ nav ul li a:hover {
 .ticket-container {
     display: flex;
     flex-wrap: wrap;
+    margin: 2%;
+    justify-content: space-around;
     gap: 20px;
 }
 

@@ -1,10 +1,14 @@
 {% extends 'ticket/main.html' %}
 
-{% block title %}Acceuil - Ticketing{% endblock %}
+{% block title %}Categories - Ticketing{% endblock %}
 
 {% block content %}
-    <h1>New Category Created</h1>
-    <p>Category: {{ category.name }}</p>
-    <p>Description: {{ category.description }}</p>
-    <p>Priority: {{ category.priority }}</p>
+<h1>Affiche d'une catégorie</h1>
+<div class="ticket-container">
+    <div class="ticket">
+        <p>Category: {{ category.name }}</p>
+        <p>Description: {{ category.description }}</p>
+        <p>Priority: {{ category.priority }}</p>
+    </div>
+</div>
 {% endblock %}

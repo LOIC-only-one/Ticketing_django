@@ -1,11 +1,11 @@
 {% extends 'ticket/main.html' %}
 
-{% block title %}Créer - Ticketing{% endblock %}
+{% block title %}Créer categorie - Ticketing{% endblock %}
 
 {% block content %}
     <form method="post" action="/ticket/traitement_category" class="form-add">
         {% csrf_token %}
         {{ form.as_ul }}
-        <input type="submit" value="Créer un ticket">
+        <input type="submit" value="Créer une catégorie">
     </form>
 {% endblock %}

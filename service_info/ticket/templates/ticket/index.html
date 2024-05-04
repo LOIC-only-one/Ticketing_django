@@ -15,6 +15,13 @@
                 <p><strong>Catégorie:</strong> {{ ticket.category }}</p>
                 <p><strong>Auteur:</strong> {{ ticket.author }}</p>
                 <p><strong>ID:</strong> {{ ticket.id }}</p>
+
+
+                <a href="{% url 'ticket:search_ticket' %}" class="index-input">
+                    <input type="button" value="Modifier/Supprimer un ticket">
+                </a>
+
+
             </div>
         {% endfor %}
     </div>

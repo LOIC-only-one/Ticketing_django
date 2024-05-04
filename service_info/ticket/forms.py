@@ -34,3 +34,12 @@ class TicketIdForm(forms.Form):
         ('update_ticket', 'Modifier'),
     )
     action = forms.ChoiceField(choices=actions, label='Action')
+    
+class CategoryIdForm(forms.Form):
+    category_id = forms.IntegerField(label='ID de la catégorie')
+    actions = (
+        ('read_category', 'Lire'),
+        ('delete_category', 'Supprimer'),
+        ('update_category', 'Modifier'),
+    )
+    action = forms.ChoiceField(choices=actions, label='Action')

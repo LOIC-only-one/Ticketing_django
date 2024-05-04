@@ -1,12 +1,16 @@
 {% extends 'ticket/main.html' %}
 
-{% block title %}Acceuil - Ticketing{% endblock %}
+{% block title %}Ticket - Ticketing{% endblock %}
 
 {% block content %}
     <h1>Ticket Detail</h1>
-    <p><strong>Title:</strong> {{ ticket.title }}</p>
-    <p><strong>Description:</strong> {{ ticket.description }}</p>
-    <p><strong>Author:</strong> {{ ticket.author }}</p>
-    <p><strong>Status:</strong> {{ ticket.status }}</p>
-    <p><strong>Category:</strong> {{ ticket.category }}</p>
+    <div class="ticket-container">
+        <div class="ticket">
+            <p><strong>Title:</strong> {{ ticket.title }}</p>
+            <p><strong>Description:</strong> {{ ticket.description }}</p>
+            <p><strong>Author:</strong> {{ ticket.author }}</p>
+            <p><strong>Status:</strong> {{ ticket.status }}</p>
+            <p><strong>Category:</strong> {{ ticket.category }}</p>
+        </div>
+    </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Ticket, Category
-from .forms import TicketForm, CategoryForm, TicketIdForm
+from .forms import TicketForm, CategoryForm, TicketIdForm, CategoryIdForm
 
 def index(request):
     tickets = Ticket.objects.all()
@@ -28,14 +28,18 @@ def delete_ticket(request, ticket_id):
         return redirect('ticket:index')
     
 def update_ticket(request, ticket_id):
-    ticket = Ticket.objects.get(id=ticket_id)
-    form = TicketForm(instance=ticket)
+    ticket_a_modifier = Ticket.objects.get(id=ticket_id)
+
     if request.method == 'POST':
-        form = TicketForm(request.POST, instance=ticket)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    return render(request, 'ticket/update_ticket.html', {'form': form, 'ticket': ticket})
+        lform = TicketForm(request.POST, instance=ticket_a_modifier)
+        if lform.is_valid():
+            lform.save()
+            return redirect('ticket:index')
+    else:
+        return render(request, 'ticket/affiche_ticket.html', {'ticket': ticket_a_modifier})
+
+    return render(request, 'ticket/update_ticket.html', {'form': lform, 'ticket': ticket_a_modifier})
+    
 
 def traitement_ticket(request):
     lform = TicketForm(request.POST)
@@ -88,16 +92,40 @@ def read_category(request, category_id):
     return render(request, 'ticket/affiche_category.html', {'category': category})
 
 def delete_category(request, category_id):
-    category = Category.objects.get(id=category_id)
-    category.delete()
-    return redirect('index')
+    if request.method == 'GET':
+        category = Category.objects.get(id=category_id)
+        category.delete()
+        return redirect('ticket:index')
 
 def update_category(request, category_id):
     category = Category.objects.get(id=category_id)
-    form = CategoryForm(instance=category)
     if request.method == 'POST':
         form = CategoryForm(request.POST, instance=category)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('ticket:search_category')
+    else:
+        form = CategoryForm(instance=category)
     return render(request, 'ticket/update_category.html', {'form': form, 'category': category})
+
+def search_category(request):
+    categories = Category.objects.all()
+    lform = CategoryIdForm()
+
+    if request.method == 'POST':
+        lform = CategoryIdForm(request.POST)
+        if lform.is_valid():
+            category_id = lform.cleaned_data['category_id'] ## recupere l'id de la categorie
+            action = lform.cleaned_data['action']
+            category = Category.objects.filter(id=category_id).first()
+            if category:
+                if action == 'read_category':
+                    return redirect('ticket:read_category', category_id=category_id)
+                elif action == 'delete_category':
+                    return redirect('ticket:delete_category', category_id=category_id)
+                elif action == 'update_category':
+                    return redirect('ticket:update_category', category_id=category_id)
+            else:
+                return render(request, 'ticket/search_category.html')
+
+    return render(request, 'ticket/search_category.html', {'form': lform, 'categories': categories})
